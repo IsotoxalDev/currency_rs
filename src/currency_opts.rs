@@ -1,26 +1,26 @@
 #[derive(Debug, Clone)]
-pub struct CurrencyOpts<'a> {
-    symbol: &'a str,
-    separator: &'a str,
-    decimal: &'a str,
+pub struct CurrencyOpts {
+    symbol: String,
+    separator: String,
+    decimal: String,
     precision: f64,
-    pattern: &'a str,
-    negative_pattern: &'a str,
+    pattern: String,
+    negative_pattern: String,
     from_cents: bool,
     increment: Option<f64>,
     use_vedic: bool,
     error_on_invalid: bool,
 }
 
-impl Default for CurrencyOpts<'_> {
+impl Default for CurrencyOpts {
     fn default() -> Self {
         Self {
-            symbol: "$",
-            separator: ",",
-            decimal: ".",
+            symbol: "$".into(),
+            separator: ",".into(),
+            decimal: ".".into(),
             precision: 2.,
-            pattern: "!#",
-            negative_pattern: "-!#",
+            pattern: "!#".into(),
+            negative_pattern: "-!#".into(),
             from_cents: false,
             increment: None,
             use_vedic: false,
@@ -29,7 +29,7 @@ impl Default for CurrencyOpts<'_> {
     }
 }
 
-impl CurrencyOpts<'_> {
+impl CurrencyOpts {
     pub fn new() -> Self {
         Self::default()
     }
@@ -49,10 +49,10 @@ impl CurrencyOpts<'_> {
 }
 
 // SETTERS
-impl<'a> CurrencyOpts<'a> {
+impl CurrencyOpts {
     pub fn set_symbol(
         mut self,
-        symbol: &'a str,
+        symbol: String,
     ) -> Self {
         self.symbol = symbol;
         self
@@ -60,7 +60,7 @@ impl<'a> CurrencyOpts<'a> {
 
     pub fn set_separator(
         mut self,
-        separator: &'a str,
+        separator: String,
     ) -> Self {
         self.separator = separator;
         self
@@ -68,7 +68,7 @@ impl<'a> CurrencyOpts<'a> {
 
     pub fn set_decimal(
         mut self,
-        decimal: &'a str,
+        decimal: String,
     ) -> Self {
         self.decimal = decimal;
         self
@@ -84,7 +84,7 @@ impl<'a> CurrencyOpts<'a> {
 
     pub fn set_pattern(
         mut self,
-        pattern: &'a str,
+        pattern: String,
     ) -> Self {
         self.pattern = pattern;
         self
@@ -92,7 +92,7 @@ impl<'a> CurrencyOpts<'a> {
 
     pub fn set_negative_pattern(
         mut self,
-        negative_pattern: &'a str,
+        negative_pattern: String,
     ) -> Self {
         self.negative_pattern = negative_pattern;
         self
@@ -137,29 +137,29 @@ impl<'a> CurrencyOpts<'a> {
 }
 
 // GETTERS
-impl CurrencyOpts<'_> {
-    pub fn symbol(&self) -> &str {
-        self.symbol
+impl CurrencyOpts {
+    pub fn symbol(&self) -> String {
+        self.symbol.clone()
     }
 
-    pub fn separator(&self) -> &str {
-        self.separator
+    pub fn separator(&self) -> String {
+        self.separator.clone()
     }
 
-    pub fn decimal(&self) -> &str {
-        self.decimal
+    pub fn decimal(&self) -> String {
+        self.decimal.clone()
     }
 
     pub fn precision(&self) -> f64 {
         self.precision
     }
 
-    pub fn pattern(&self) -> &str {
-        self.pattern
+    pub fn pattern(&self) -> String {
+        self.pattern.clone()
     }
 
-    pub fn negative_pattern(&self) -> &str {
-        self.negative_pattern
+    pub fn negative_pattern(&self) -> String {
+        self.negative_pattern.clone()
     }
 
     pub fn from_cents(&self) -> bool {
